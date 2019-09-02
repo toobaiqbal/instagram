@@ -1,0 +1,27 @@
+<div class="homepage">
+  <div class='form-upload'>
+    <%= render 'upload_form' %>
+  </div>
+  <div class="posts">
+    <% @posts.each do |post| %>
+      <section class="post">
+        <div class="user">
+          <div class="avatar">
+            <img src="assets/3.jpg">
+          </div>
+          <div class="username">
+            <%= post.user.username %>
+          </div>
+        </div>
+        <% if post.image.attached? %>
+          <%= image_tag post.image, class: 'main-image' %>
+        <% end %>
+        <div class="description">
+          <%= post.description %>
+        </div>
+      </section>
+    <% end %>
+    <%= paginate @posts %>
+  </div>
+</div>
+
